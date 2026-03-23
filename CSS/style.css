@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Cagliostro&family=Caveat:wght@400..700&display=swap");
+
+body {
+  background-color: #000000;
+}
+
+h1 {
+  color: #ffffff;
+  text-shadow:
+    -1px -1px 0 #23b2c0,
+    1px -0.5px 0 #ec1d5b;
+  font-family: "caveat", "roboto", cursive;
+  font-size: 8em;
+  text-align: center;
+}
+
+p {
+  color: red;
+  background-color: yellow;
+  text-transform: uppercase;
+}
+
+/* CVS */
+
+/* 396f04,7dbd07,589507,0a2004,b7db25 */
+
+/* CVS with # */
+
+/* #396f04,#7dbd07,#589507,#0a2004,#b7db25 */
+
+/* Array */
+
+/* ["396f04", "7dbd07", "589507", "0a2004", "b7db25"] */
+
+/* Array with # */
+
+/* ["#396f04", "#7dbd07", "#589507", "#0a2004", "#b7db25"] */
+
+/* CVS */
+
+/* 7dbd07,396f04,b7db25,0a2004,589507 */
+
+/* CVS with # */
+
+/* #7dbd07,#396f04,#b7db25,#0a2004,#589507 */
+
+/* Array */
+
+/* ["7dbd07", "396f04", "b7db25", "0a2004", "589507"] */
+
+/* Array with # */
+
+/* ["#7dbd07", "#396f04", "#b7db25", "#0a2004", "#589507"] */
