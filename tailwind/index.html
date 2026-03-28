@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <!-- กำหนดชุดอักขระให้รองรับภาษาไทยได้ถูกต้อง -->
+    <meta charset="UTF-8" />
+
+    <!-- ทำให้หน้า responsive บนมือถือ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ชื่อแท็บของหน้าเว็บ -->
+    <title>Minimal Tailwind Study Page</title>
+
+    <!-- โหลด Tailwind ผ่าน CDN เพื่อให้เหลือใช้งานได้ด้วยไฟล์ HTML ไฟล์เดียว -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <!--
+    min-h-screen = ความสูงขั้นต่ำเต็มหน้าจอ
+    bg-stone-100 = พื้นหลังโทนอ่อน
+    text-stone-900 = สีข้อความหลักโทนเข้ม
+    antialiased = ทำให้ฟอนต์ดูเนียนขึ้น
+  -->
+  <body class="min-h-screen bg-stone-100 text-stone-900 antialiased">
+    <!--
+      mx-auto = จัด layout หลักให้อยู่กลางจอ
+      max-w-7xl = จำกัดความกว้างสูงสุด
+      px-5 = padding ซ้ายขวาบนจอเล็ก
+      py-6 = padding บนล่างด้านนอก
+      sm:px-8 = จอ sm เพิ่ม padding ซ้ายขวา
+      lg:px-12 = จอ lg เพิ่ม padding อีก
+    -->
+    <div class="mx-auto max-w-7xl px-5 py-6 sm:px-8 lg:px-12">
+      <!--
+        HEADER
+        sticky = ให้แถบนี้ติดด้านบนเวลาเลื่อน
+        top-4 = เว้นจากด้านบน 1rem
+        z-20 = ลำดับชั้นสูงกว่า element ปกติ
+        mb-6 = เว้นด้านล่างจาก section ถัดไป
+        rounded-full = ทำแถบให้โค้งมนแบบแคปซูล
+        border = เปิดเส้นขอบ
+        border-stone-200 = ขอบสีอ่อน
+        bg-white/80 = พื้นหลังขาวโปร่งเล็กน้อย
+        px-4 py-3 = padding ด้านใน
+        backdrop-blur = เบลอพื้นหลังด้านหลังให้ดูนุ่ม
+      -->
+      <header
+        class="sticky top-4 z-20 mb-6 rounded-full border border-stone-200 bg-white/80 px-4 py-3 backdrop-blur"
+      >
+        <!--
+          flex = เรียงลูกในแนวนอน
+          flex-wrap = ถ้าพื้นที่ไม่พอให้ตกบรรทัดได้
+          items-center = จัดกึ่งกลางแนวตั้ง
+          justify-between = ดันซ้ายขวาออกจากกัน
+          gap-3 = เว้นระยะระหว่าง item
+        -->
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <!--
+            flex = จัดจุดกลมกับข้อความให้อยู่แถวเดียวกัน
+            items-center = จัดกึ่งกลางแนวตั้ง
+            gap-3 = ระยะห่างระหว่างจุดกับข้อความ
+          -->
+          <div class="flex items-center gap-3">
+            <!--
+              h-2.5 / w-2.5 = ขนาดจุดกลม
+              rounded-full = ทำเป็นวงกลม
+              bg-stone-900 = สีเข้ม
+            -->
+            <span class="h-2.5 w-2.5 rounded-full bg-stone-900"></span>
+
+            <!--
+              text-sm = ขนาดเล็ก
+              font-medium = น้ำหนักกลาง
+              tracking-[0.18em] = ระยะห่างตัวอักษรแบบ custom
+              uppercase = แปลงอังกฤษให้เป็นตัวพิมพ์ใหญ่
+              text-stone-600 = สีข้อความรอง
+            -->
+            <p
+              class="text-sm font-medium uppercase tracking-[0.18em] text-stone-600"
+            >
+              Tailwind Minimal Notes
+            </p>
+          </div>
+
+          <!--
+            flex = จัดเมนูแนวนอน
+            items-center = กึ่งกลางแนวตั้ง
+            gap-2 = ระยะห่างระหว่างลิงก์
+            text-sm = ขนาดเล็ก
+          -->
+          <nav class="flex items-center gap-2 text-sm">
+            <a
+              class="rounded-full px-3 py-1.5 text-stone-500 transition hover:bg-stone-100 hover:text-stone-900"
+              href="#hero"
+              >Hero</a
+            >
+            <a
+              class="rounded-full px-3 py-1.5 text-stone-500 transition hover:bg-stone-100 hover:text-stone-900"
+              href="#colors"
+              >Colors</a
+            >
+            <a
+              class="rounded-full px-3 py-1.5 text-stone-500 transition hover:bg-stone-100 hover:text-stone-900"
+              href="#buttons"
+              >Buttons</a
+            >
+            <a
+              class="rounded-full px-3 py-1.5 text-stone-500 transition hover:bg-stone-100 hover:text-stone-900"
+              href="#cards"
+              >Cards</a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <!--
+        main = ส่วนเนื้อหาหลักของหน้า
+        space-y-6 = เว้นระยะห่างแนวตั้งระหว่างแต่ละ section
+      -->
+      <main class="space-y-6">
+        <!--
+          HERO SECTION
+          id="hero" = ใช้เป็นจุดให้เมนูกดลิงก์มาถึง
+          grid = ใช้ grid แบ่ง layout
+          gap-6 = ระยะห่างแต่ละคอลัมน์/แถว
+          rounded-[2rem] = มุมมนแบบ custom
+          bg-white = พื้นหลังสีขาว
+          p-6 = padding ด้านใน
+          shadow-[...] = เงาแบบ custom
+          md:grid-cols-[1.3fr_0.9fr] = จอ md ขึ้นไป แบ่งคอลัมน์ซ้ายกว้างกว่าขวา
+          md:p-10 = จอใหญ่ padding มากขึ้น
+        -->
+        <section
+          id="hero"
+          class="grid gap-6 rounded-[2rem] bg-white p-6 shadow-[0_20px_60px_rgba(28,25,23,0.08)] md:grid-cols-[1.3fr_0.9fr] md:p-10"
+        >
+          <!-- ฝั่งซ้ายของ hero -->
+          <div class="flex flex-col justify-between gap-10">
+            <!--
+              space-y-6 = เว้นระยะห่างระหว่าง badge, heading, paragraph, buttons
+            -->
+            <div class="space-y-6">
+              <!--
+                inline-flex = กล่องกว้างพอดีเนื้อหา
+                items-center = จัดกลางแนวตั้ง
+                gap-2 = ระยะห่างภายใน
+                rounded-full = กล่องทรงแคปซูล
+                border border-stone-300 = เส้นขอบอ่อน
+                px-4 py-2 = ระยะห่างในกล่อง
+                text-sm = ตัวเล็ก
+                text-stone-600 = สีข้อความรอง
+              -->
+              <div
+                class="inline-flex items-center gap-2 rounded-full border border-stone-300 px-4 py-2 text-sm text-stone-600"
+              >
+                <span class="h-2 w-2 rounded-full bg-stone-900"></span>
+                มินิมอล + คอมเมนต์ละเอียด + ตัวอย่างฝึกต่อ
+              </div>
+
+              <!--
+                space-y-4 = เว้นระยะระหว่างหัวข้อกับย่อหน้า
+              -->
+              <div class="space-y-4">
+                <!--
+                  max-w-2xl = จำกัดความกว้างหัวข้อ
+                  text-4xl = ตัวใหญ่บนมือถือ
+                  font-semibold = หนากลางค่อนเข้ม
+                  tracking-tight = ระยะตัวอักษรชิดขึ้น
+                  sm:text-5xl = จอ sm ขยายขึ้น
+                  lg:text-6xl = จอ lg ใหญ่ขึ้นอีก
+                -->
+                <h1
+                  class="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+                >
+                  หน้าเดียวที่ใช้
+                  <span class="text-stone-400">เรียน Tailwind</span>
+                  ได้ทั้ง layout และ utility classes
+                </h1>
+
+                <!--
+                  max-w-xl = จำกัดความกว้างให้อ่านง่าย
+                  text-base = ขนาดปกติ
+                  leading-7 = ระยะบรรทัดโปร่ง
+                  text-stone-600 = สีรอง
+                -->
+                <p class="max-w-xl text-base leading-7 text-stone-600">
+                  ไฟล์นี้ถูกจัดให้เป็นเหมือนชีตสรุปสั้น ๆ โดยแยก section ชัดเจน
+                  และใส่คอมเมนต์อธิบาย class เกือบทุกจุด
+                  เพื่อให้เปิดดูแล้วอ่านตามได้ทีละบรรทัด
+                </p>
+              </div>
+
+              <!--
+                flex = เรียงปุ่มแนวนอน
+                flex-wrap = ไม่พอพื้นที่ก็ตกบรรทัด
+                gap-3 = ระยะห่างระหว่างปุ่ม
+              -->
+              <div class="flex flex-wrap gap-3">
+                <!-- ปุ่มหลัก -->
+                <button
+                  class="rounded-full bg-stone-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-stone-700"
+                >
+                  เริ่มดูตัวอย่าง
+                </button>
+
+                <!-- ปุ่มรอง -->
+                <button
+                  class="rounded-full border border-stone-300 px-5 py-3 text-sm font-medium text-stone-700 transition hover:border-stone-900 hover:text-stone-900"
+                >
+                  อ่านคอมเมนต์ประกอบ
+                </button>
+              </div>
+            </div>
+
+            <!--
+              กล่องสถิติด้านล่างฝั่งซ้าย
+              grid = เรียงเป็น grid
+              gap-4 = ระยะห่างการ์ด
+              sm:grid-cols-3 = จอ sm ขึ้นไปเป็น 3 คอลัมน์
+            -->
+            <div class="grid gap-4 sm:grid-cols-3">
+              <article class="rounded-3xl bg-stone-100 p-4">
+                <p class="text-2xl font-semibold">Layout</p>
+                <p class="mt-2 text-sm leading-6 text-stone-600">
+                  ฝึก `flex`, `grid`, `gap`, `max-w`
+                </p>
+              </article>
+
+              <article class="rounded-3xl bg-stone-100 p-4">
+                <p class="text-2xl font-semibold">Style</p>
+                <p class="mt-2 text-sm leading-6 text-stone-600">
+                  ฝึก `bg-*`, `text-*`, `border`, `shadow`
+                </p>
+              </article>
+
+              <article class="rounded-3xl bg-stone-100 p-4">
+                <p class="text-2xl font-semibold">Responsive</p>
+                <p class="mt-2 text-sm leading-6 text-stone-600">
+                  ฝึก `sm:*`, `md:*`, `lg:*`
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- ฝั่งขวาของ hero -->
+          <aside
+            class="rounded-[1.75rem] border border-stone-200 bg-stone-50 p-6 md:p-8"
+          >
+            <!--
+              space-y-5 = เว้นระยะระหว่างกล่องย่อยด้านใน
+            -->
+            <div class="space-y-5">
+              <div class="space-y-2">
+                <p
+                  class="text-sm font-medium uppercase tracking-[0.2em] text-stone-500"
+                >
+                  Quick Summary
+                </p>
+                <h2 class="text-2xl font-semibold tracking-tight">
+                  หลักคิดของดีไซน์มินิมอล
+                </h2>
+              </div>
+
+              <div class="rounded-2xl bg-white p-4">
+                <p class="text-sm font-medium text-stone-900">
+                  1. ใช้สีให้น้อย
+                </p>
+                <p class="mt-2 text-sm leading-6 text-stone-600">
+                  เมื่อ palette ไม่เยอะ เราจะควบคุมโฟกัสของสายตาได้ง่ายขึ้น
+                </p>
+              </div>
+
+              <div class="rounded-2xl bg-white p-4">
+                <p class="text-sm font-medium text-stone-900">
+                  2. ใช้ spacing ให้สม่ำเสมอ
+                </p>
+                <p class="mt-2 text-sm leading-6 text-stone-600">
+                  ระยะห่างที่นิ่งและซ้ำกัน ทำให้หน้าเว็บดูเป็นระบบมากขึ้น
+                </p>
+              </div>
+
+              <div class="rounded-2xl bg-white p-4">
+                <p class="text-sm font-medium text-stone-900">
+                  3. เน้นลำดับสายตา
+                </p>
+                <p class="mt-2 text-sm leading-6 text-stone-600">
+                  ใช้ขนาดตัวอักษร น้ำหนัก และสีอ่อนเข้ม เพื่อบอกว่าอะไรสำคัญก่อน
+                </p>
+              </div>
+
+              <div class="rounded-3xl bg-stone-900 p-5 text-white">
+                <p class="text-sm text-stone-300">Responsive Tip</p>
+                <p class="mt-2 text-base leading-7">
+                  คลาสอย่าง `md:grid-cols-2` หมายถึง เมื่อหน้าจอถึง breakpoint
+                  ระดับ `md` ให้ grid เปลี่ยนเป็น 2 คอลัมน์
+                </p>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <!--
+          COLORS SECTION
+          ใช้สอนเรื่องสีหลัก สีรอง พื้นหลัง และขอบ
+        -->
+        <section
+          id="colors"
+          class="rounded-[2rem] bg-white p-6 shadow-[0_20px_60px_rgba(28,25,23,0.06)] md:p-10"
+        >
+          <div class="mb-6 space-y-2">
+            <p
+              class="text-sm font-medium uppercase tracking-[0.2em] text-stone-500"
+            >
+              Colors
+            </p>
+            <h2 class="text-3xl font-semibold tracking-tight">
+              ตัวอย่างการใช้สีใน Tailwind
+            </h2>
+            <p class="max-w-2xl text-sm leading-6 text-stone-600">
+              ด้านล่างคือการ์ดตัวอย่างสี เพื่อให้เห็นว่าคลาสกลุ่ม `bg-*`,
+              `text-*`, `border-*` ช่วยกำหนด mood ของหน้าได้ยังไง
+            </p>
+          </div>
+
+          <!--
+            grid = เรียงสีเป็นตาราง
+            gap-4 = ระยะห่างการ์ด
+            sm:grid-cols-2 = จอ sm เป็น 2 คอลัมน์
+            lg:grid-cols-4 = จอ lg เป็น 4 คอลัมน์
+          -->
+          <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-3xl border border-stone-200 bg-stone-50 p-5">
+              <div class="h-20 rounded-2xl bg-stone-900"></div>
+              <p class="mt-4 text-lg font-medium">`bg-stone-900`</p>
+              <p class="mt-1 text-sm text-stone-600">
+                ใช้กับปุ่มหลักหรือจุดที่ต้องการเน้น
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-stone-200 bg-stone-50 p-5">
+              <div class="h-20 rounded-2xl bg-stone-300"></div>
+              <p class="mt-4 text-lg font-medium">`bg-stone-300`</p>
+              <p class="mt-1 text-sm text-stone-600">
+                ใช้เป็นสีรองหรือพื้นหลังอ่อน
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-stone-200 bg-stone-50 p-5">
+              <div class="h-20 rounded-2xl bg-white"></div>
+              <p class="mt-4 text-lg font-medium">`bg-white`</p>
+              <p class="mt-1 text-sm text-stone-600">
+                ใช้กับ card หลักเพื่อให้คอนทราสต์ชัด
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-stone-200 bg-stone-50 p-5">
+              <div
+                class="h-20 rounded-2xl border border-stone-300 bg-stone-100"
+              ></div>
+              <p class="mt-4 text-lg font-medium">`border-stone-300`</p>
+              <p class="mt-1 text-sm text-stone-600">
+                ใช้ตีกรอบเบา ๆ โดยไม่แข็งเกินไป
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!--
+          BUTTONS SECTION
+          ใช้สอนเรื่องปุ่มหลาย state
+        -->
+        <section
+          id="buttons"
+          class="rounded-[2rem] bg-white p-6 shadow-[0_20px_60px_rgba(28,25,23,0.06)] md:p-10"
+        >
+          <div class="mb-6 space-y-2">
+            <p
+              class="text-sm font-medium uppercase tracking-[0.2em] text-stone-500"
+            >
+              Buttons
+            </p>
+            <h2 class="text-3xl font-semibold tracking-tight">
+              ตัวอย่างปุ่มหลายแบบ
+            </h2>
+            <p class="max-w-2xl text-sm leading-6 text-stone-600">
+              ส่วนนี้ช่วยให้เห็นความต่างของปุ่ม primary, secondary และ ghost
+              พร้อมคลาส `hover:*` และ `transition`
+            </p>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-3">
+            <div class="rounded-3xl bg-stone-50 p-5">
+              <p class="mb-4 text-sm font-medium text-stone-700">
+                Primary Button
+              </p>
+              <button
+                class="w-full rounded-full bg-stone-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-stone-700"
+              >
+                บันทึกข้อมูล
+              </button>
+              <p class="mt-4 text-sm leading-6 text-stone-600">
+                ใช้ `w-full` เพื่อให้ปุ่มกว้างเต็ม card และใช้พื้นเข้มเพื่อเน้น
+                action หลัก
+              </p>
+            </div>
+
+            <div class="rounded-3xl bg-stone-50 p-5">
+              <p class="mb-4 text-sm font-medium text-stone-700">
+                Secondary Button
+              </p>
+              <button
+                class="w-full rounded-full border border-stone-300 bg-white px-5 py-3 text-sm font-medium text-stone-700 transition hover:border-stone-900 hover:text-stone-900"
+              >
+                ดูตัวอย่าง
+              </button>
+              <p class="mt-4 text-sm leading-6 text-stone-600">
+                ปุ่มแบบขอบเหมาะกับ action รอง
+                ที่ควรเห็นแต่ไม่แย่งความเด่นจากปุ่มหลัก
+              </p>
+            </div>
+
+            <div class="rounded-3xl bg-stone-50 p-5">
+              <p class="mb-4 text-sm font-medium text-stone-700">
+                Ghost Button
+              </p>
+              <button
+                class="w-full rounded-full px-5 py-3 text-sm font-medium text-stone-700 transition hover:bg-stone-200 hover:text-stone-900"
+              >
+                ยกเลิก
+              </button>
+              <p class="mt-4 text-sm leading-6 text-stone-600">
+                ไม่มีเส้นขอบและไม่มีพื้นเดิม เหมาะกับ action ที่สำคัญน้อยที่สุด
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!--
+          CARDS SECTION
+          ใช้สอนเรื่อง card layout และ typography
+        -->
+        <section
+          id="cards"
+          class="rounded-[2rem] bg-white p-6 shadow-[0_20px_60px_rgba(28,25,23,0.06)] md:p-10"
+        >
+          <div class="mb-6 space-y-2">
+            <p
+              class="text-sm font-medium uppercase tracking-[0.2em] text-stone-500"
+            >
+              Cards
+            </p>
+            <h2 class="text-3xl font-semibold tracking-tight">
+              ตัวอย่าง card หลายรูปแบบ
+            </h2>
+            <p class="max-w-2xl text-sm leading-6 text-stone-600">
+              ลองดูว่าการเปลี่ยน `padding`, `border`, `background`, `text color`
+              และ `shadow` ช่วยให้ card ให้ความรู้สึกต่างกันยังไง
+            </p>
+          </div>
+
+          <div class="grid gap-4 lg:grid-cols-3">
+            <article class="rounded-3xl border border-stone-200 p-5">
+              <p class="text-sm text-stone-500">Simple Card</p>
+              <h3 class="mt-2 text-xl font-semibold">เรียบที่สุด</h3>
+              <p class="mt-3 text-sm leading-6 text-stone-600">
+                ใช้แค่ขอบบาง ๆ และพื้นที่ว่างให้พอ ก็ได้ card ที่สะอาดตาแล้ว
+              </p>
+            </article>
+
+            <article class="rounded-3xl bg-stone-50 p-5">
+              <p class="text-sm text-stone-500">Soft Card</p>
+              <h3 class="mt-2 text-xl font-semibold">นุ่มกว่าเดิม</h3>
+              <p class="mt-3 text-sm leading-6 text-stone-600">
+                เปลี่ยนพื้นหลังให้อ่อนลงแทนการใช้เส้นขอบเยอะ ๆ
+                จะได้ความรู้สึกเบา
+              </p>
+            </article>
+
+            <article class="rounded-3xl bg-stone-900 p-5 text-white">
+              <p class="text-sm text-stone-300">High Contrast Card</p>
+              <h3 class="mt-2 text-xl font-semibold">เน้นจุดสำคัญ</h3>
+              <p class="mt-3 text-sm leading-6 text-stone-200">
+                card เข้มเหมาะกับข้อความสำคัญหรือส่วนสรุปที่อยากให้เด่นขึ้นทันที
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!--
+          RESPONSIVE SECTION
+          ใช้ย้ำเรื่อง breakpoint
+        -->
+        <section
+          class="rounded-[2rem] bg-white p-6 shadow-[0_20px_60px_rgba(28,25,23,0.06)] md:p-10"
+        >
+          <div class="mb-6 space-y-2">
+            <p
+              class="text-sm font-medium uppercase tracking-[0.2em] text-stone-500"
+            >
+              Responsive
+            </p>
+            <h2 class="text-3xl font-semibold tracking-tight">
+              ดูการเปลี่ยน layout ตามขนาดหน้าจอ
+            </h2>
+            <p class="max-w-2xl text-sm leading-6 text-stone-600">
+              ด้านล่างใช้ `grid-cols-1`, `sm:grid-cols-2`, `lg:grid-cols-4`
+              เพื่อให้เห็นว่า breakpoint ทำงานยังไง
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-3xl bg-stone-100 p-5">
+              <p class="text-sm text-stone-500">Mobile</p>
+              <p class="mt-2 text-lg font-semibold">1 คอลัมน์</p>
+            </div>
+            <div class="rounded-3xl bg-stone-100 p-5">
+              <p class="text-sm text-stone-500">Small</p>
+              <p class="mt-2 text-lg font-semibold">2 คอลัมน์</p>
+            </div>
+            <div class="rounded-3xl bg-stone-100 p-5">
+              <p class="text-sm text-stone-500">Large</p>
+              <p class="mt-2 text-lg font-semibold">4 คอลัมน์</p>
+            </div>
+            <div class="rounded-3xl bg-stone-900 p-5 text-white">
+              <p class="text-sm text-stone-300">Tip</p>
+              <p class="mt-2 text-lg font-semibold">เริ่มจากมือถือก่อน</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
